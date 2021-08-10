@@ -1,6 +1,20 @@
+import ElementPlus from 'element-plus';
+import locale from 'element-plus/lib/locale/lang/zh-cn';
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import 'element-plus/lib/theme-chalk/index.css';
+// import request from "@/request/index";
 
-createApp(App).use(store).use(router).mount('#app');
+// // 这里监听请求的错误统一处理（做弹窗提示提示）
+// request.on("HttpStatusFaild", () => {
+//    // console.log("Capture status");
+//    alert("请求失败，请检查接口问题");
+// });
+
+createApp(App)
+  .use(store)
+  .use(router)
+  .use(ElementPlus, { locale })
+  .mount('#app');

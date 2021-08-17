@@ -2,7 +2,7 @@
   <div>
     <el-container>
       <el-aside>
-        <Sidebar></Sidebar>
+        <Sidebar :routes="routes"></Sidebar>
       </el-aside>
       <el-container>
         <el-header>
@@ -17,9 +17,9 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive, watchEffect } from 'vue';
+import { watchEffect } from 'vue';
 import { useStore } from 'vuex';
-import { useRouter, useRoute } from 'vue-router';
+import { useRoute } from 'vue-router';
 
 import Sidebar from './components/SideBar/index.vue';
 import Head from './components/Header/index.vue';

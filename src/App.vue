@@ -1,34 +1,33 @@
 <template>
-  <img src="./assets/logo.png">
   <div>
-    <p>
-      If Element Plus is successfully added to this project, you'll see an
-      <code v-text="'<el-button>'"></code>
-      below
-    </p>
-    <el-button type="primary">el-button</el-button>
+    <layout></layout>
   </div>
-  <HelloWorld msg="Welcome to Your Vue.js App"></HelloWorld>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import layout from '@/layout/index.vue';
 
 export default {
-  name: 'App',
+  setup() {
+    return {};
+  },
   components: {
-    HelloWorld,
+    layout,
   },
 };
 </script>
-
-<style>
+<style lang="less">
+body{
+  margin: 0;
+}
 #app {
+  min-width: 1280px;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  .el-button--primary{
+    background: #4AB7BD; // button 主题色保持一致
+    border-color: #4AB7BD;
+  }
 }
 </style>

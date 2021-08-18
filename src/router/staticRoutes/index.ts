@@ -29,6 +29,7 @@ export const staticRoutes = [
       {
         path: 'doctxt',
         name: '文档',
+        children: [],
         component: Wrapper,
         meta: {
           icon: 'el-icon-s-data',
@@ -41,6 +42,15 @@ export const staticRoutes = [
         children: [],
         meta: {
           icon: 'el-icon-camera',
+        },
+      },
+      {
+        path: 'doctxt',
+        name: '电影',
+        children: [],
+        component: Wrapper,
+        meta: {
+          icon: 'el-icon-s-data',
         },
       },
     ],

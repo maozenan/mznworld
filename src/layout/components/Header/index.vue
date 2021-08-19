@@ -1,6 +1,8 @@
 <template>
   <div class="header_main">
     <div class="collapseicon">
+      <i @click="toggleMenuCollpase()" :class="state.controls.isCollapse ?
+      'el-icon-s-unfold' : 'el-icon-s-fold'"></i>
       <el-breadcrumb separator="/">
         <transition-group name="breadcrumb">
           <el-breadcrumb-item key="/" :to="{ path: '/' }">首页</el-breadcrumb-item>
@@ -17,44 +19,37 @@
 </template>
 
 <script lang="ts">
-// import { useStore } from "vuex";
-// import { useRoute } from "vue-router";
-// import { watch, reactive, onMounted } from "vue";
+import { useStore } from 'vuex';
+import { useRoute } from 'vue-router';
+import { watch, reactive } from 'vue';
 // import tagsview from "../Tagsview/index.vue";
 // import {useTheme} from '@/composition/useThemeApi';
 export default {
-//   setup() {
-//     const themeApi = useTheme();
-//     const store = useStore();
-//     const route = useRoute();
-//     let routeListConfig: any = reactive({
-//       currentRouteList: []
-//     });
-//     function toggleMenuCollpase() {
-//       store.commit("TOOGLESIDEBAR");
-//     }
+  setup() {
+    const store = useStore();
+    const route = useRoute();
+    const routeListConfig: any = reactive({
+      currentRouteList: [],
+    });
+    function toggleMenuCollpase() {
+      store.commit('TOOGLESIDEBAR');
+    }
 
-  //     function useRouteList(value: any) {
-  //       return value;
-  //     }
+    watch(
+      () => route.path,
+      () => {
+        routeListConfig.currentRouteList = route.matched;
+      },
+    );
 
-  //     watch(
-  //       () => route.path,
-  //       () => {
-  //         routeListConfig.currentRouteList = route.matched;
-  //       }
-  //     );
-
-//     return {
-//       toggleMenuCollpase,
-//       routeListConfig,
-//       state: store.state,
-//       themeApi
-//     };
-//   },
-//   components: {
-//     tagsview
-//   }
+    return {
+      toggleMenuCollpase,
+      routeListConfig,
+      state: store.state,
+    };
+  },
+  components: {
+  },
 };
 </script>
 <style lang="less">

@@ -45,12 +45,12 @@ export const staticRoutes = [
         },
       },
       {
-        path: 'doctxt',
+        path: 'movies',
         name: '电影',
         children: [],
         component: Wrapper,
         meta: {
-          icon: 'el-icon-s-data',
+          icon: 'el-icon-video-camera-solid',
         },
       },
     ],
@@ -79,7 +79,7 @@ export const staticRoutes = [
     component: Setting,
     children: [],
     meta: {
-      icon: 'el-icon-date',
+      icon: 'el-icon-setting',
     },
   },
 ];

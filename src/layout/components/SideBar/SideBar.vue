@@ -1,6 +1,7 @@
 <template>
     <div>
-    <template v-for="(routeItem, routeIndex) in item">
+    <template  :key="routeIndex" v-for="(routeItem, routeIndex) in item">
+    <router-link :to="resolvePath(routeItem.path)">
       <el-menu-item
         :key="routeIndex"
         v-if="routeItem.children!=undefined && routeItem.children.length <= 0"
@@ -9,6 +10,7 @@
         <i :class="routeItem.meta.icon || ''"></i>
         <template #title>{{ routeItem.name }}</template>
       </el-menu-item>
+    </router-link>
       <el-submenu
         class="submenu-title"
         :key="routeIndex"
@@ -32,6 +34,7 @@
 </template>
 <script>
 import path from 'path';
+import router from 'vue-router';
 // import { useStore } from 'vuex';
 // import variables from '@/style/variable.less';
 
@@ -41,7 +44,7 @@ export default {
     item: Object,
     basePath: String,
   },
-  setup(props, context) {
+  setup(props) {
     function resolvePath(routePath) {
       const hasBasePath = props.basePath ? props.basePath : '';
       return path.resolve(hasBasePath, routePath);
@@ -92,5 +95,12 @@ export default {
       background-color: #001528 !important;
     }
   }
+
+  a {
+  text-decoration: none;
+}
+  .router-link-active {
+  text-decoration: none;
+}
 }
 </style>

@@ -9,7 +9,11 @@
           <Head></Head>
         </el-header>
         <el-main>
-            <Drawer></Drawer>
+          <router-view v-slot="{Component}">
+              <transition name="fade-transform" mode="out-in">
+                <component class="view" :is="Component"></component>
+              </transition>
+            </router-view>
         </el-main>
       </el-container>
     </el-container>
@@ -23,7 +27,6 @@ import { useRoute } from 'vue-router';
 
 import Sidebar from './components/SideBar/index.vue';
 import Head from './components/Header/index.vue';
-import Drawer from './components/Drawer/index.vue';
 
 import { useDynamicRoutesHook } from '@/composition/useTagViewApi';
 
@@ -49,7 +52,6 @@ export default {
   components: {
     Sidebar,
     Head,
-    Drawer,
   },
 };
 </script>

@@ -5,6 +5,7 @@ import Power from '@/views/Power.vue';
 import Command from '@/views/Command.vue';
 import Picture from '@/views/Picture.vue';
 import Setting from '@/views/Setting.vue';
+import Contract from '@/views/Contract.vue';
 // import Component from '@/views/Component.vue';
 
 export const staticRoutes = [
@@ -58,8 +59,18 @@ export const staticRoutes = [
   {
     path: '/power',
     name: '功能',
-    component: Power,
-    children: [],
+    component: Contract,
+    children: [
+      {
+        path: 'contract',
+        name: '自动生成合同',
+        children: [],
+        component: Contract,
+        meta: {
+          icon: 'el-icon-s-data',
+        },
+      },
+    ],
     meta: {
       icon: 'el-icon-s-release',
     },

@@ -42,9 +42,9 @@
 
 <script>
 import {
-  defineComponent, reactive, ref, toRefs,
+  defineComponent, reactive,
 } from 'vue';
-import { useRouter } from 'vue-router';
+// import { useRouter } from 'vue-router';
 import axios from 'axios';
 import download from 'downloadjs';
 

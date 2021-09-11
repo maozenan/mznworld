@@ -6,14 +6,8 @@
       <el-breadcrumb separator="/">
         <transition-group name="breadcrumb">
           <el-breadcrumb-item key="/" :to="{ path: '/' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item
-            ><a>test1</a></el-breadcrumb-item
-          >
         </transition-group>
       </el-breadcrumb>
-    </div>
-    <div class="link-tag">
-      <tagsview></tagsview>
     </div>
   </div>
 </template>
@@ -22,8 +16,7 @@
 import { useStore } from 'vuex';
 import { useRoute } from 'vue-router';
 import { watch, reactive } from 'vue';
-// import tagsview from "../Tagsview/index.vue";
-// import {useTheme} from '@/composition/useThemeApi';
+
 export default {
   setup() {
     const store = useStore();

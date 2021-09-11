@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import Home from '@/views/Home.vue';
 import Wrapper from '@/layout/components/Drawer/index.vue';
-import Power from '@/views/Power.vue';
+// import Power from '@/views/Power.vue';
 import Command from '@/views/Command.vue';
 import Picture from '@/views/Picture.vue';
 import Setting from '@/views/Setting.vue';
@@ -10,7 +10,7 @@ import Contract from '@/views/Contract.vue';
 
 export const staticRoutes = [
   {
-    path: '/',
+    path: '/home',
     name: '首页',
     component: Home,
     children: [],

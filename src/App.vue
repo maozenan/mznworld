@@ -1,6 +1,7 @@
 <template>
   <div>
-    <layout></layout>
+    <router-view v-if="$route.path === '/login'"></router-view>
+    <layout v-else></layout>
   </div>
 </template>
 <script>

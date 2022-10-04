@@ -24,7 +24,7 @@
     ></el-input>
   </el-form-item>
   <el-form-item>
-    <el-button type="primary" @click="submitForm()">提交</el-button>
+    <el-button type="primary" @click="login()">提交</el-button>
   </el-form-item>
 </el-form>
   </div>
@@ -34,6 +34,7 @@
 import { defineComponent, reactive, ref } from 'vue';
 import { ElMessage } from 'element-plus';
 import { useRouter } from 'vue-router';
+import axios from 'axios';
 
 export default defineComponent({
   setup() {
@@ -43,19 +44,28 @@ export default defineComponent({
       account: '',
       pass: '',
     });
-    const submitForm = () => {
-      console.log(form);
-      if (form.account !== 'admin' || form.pass !== '123456') {
-        ElMessage('账号或密码错误');
-        return;
-      }
-      localStorage.setItem('user', JSON.stringify(form));
-      router.push('/');
+    const login = () => {
+      axios({
+        headers: {
+          Accept: '*/*',
+          'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
+        },
+        method: 'POST',
+        url: 'http://localhost:3000/Login',
+        data: JSON.stringify(form),
+      }).then((res) => {
+        if (res.status === 200 && res.data === '登陆成功') {
+          localStorage.setItem('user', JSON.stringify(form));
+          router.push('/');
+        } else if (res.status === 200 && res.data === '账号密码错误，请重新输入') {
+          ElMessage('账号或密码错误');
+        }
+      });
     };
     return {
       form,
-      submitForm,
       loginForm,
+      login,
     };
   },
 });
@@ -70,14 +80,14 @@ export default defineComponent({
   background-size: cover;
 }
 .login_form {
-    background-color: rgb(253, 204, 227);
+    background-color: rgb(247, 220, 220);
     position: absolute;
     width: 300px;
-    height: 500px;
-    top: 100px;
+    height: 300px;
+    top: 200px;
     right: 100px;
     border-radius: 10px;
-    box-shadow: 1px 1px 5px #333;
+    box-shadow: 1px 1px 5px rgb(250, 210, 220);
     display:flex;
     justify-content: center;
     align-items: center;
